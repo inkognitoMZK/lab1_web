@@ -1,0 +1,17 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+<!-- задаем заголовок страницы -->
+{% block title %}This is an page{% endblock %}
+<!-- блок body -->
+{% block content %}
+{{ wtf.quick_form(form, method='post',enctype="multipart/form-data", action="/") }}
+<!-- один из стандартных тегов html – заголовок второго уровня -->
+<h2>Графики распределения цветов: </h2>
+<!-- отображаем загруженное изображение с закругленными углами -->
+<!-- если оно есть (после submit) -->
+{% if image_name %}
+ <p><img src={{image_name}} class="img-rounded" alt="My Image" width = 600 height=600 />
+{% else %}
+ <p> There is no image yet </p>
+{% endif %}
+{% endblock %}
